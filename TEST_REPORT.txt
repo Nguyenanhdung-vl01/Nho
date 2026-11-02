@@ -1,0 +1,50 @@
+STUDYSPACE BLOOM — BÁO CÁO RÀ SOÁT PHIÊN BẢN NHẬN DIỆN OLYMPIA
+Ngày kiểm tra: 02-11-2026
+
+1. PHẠM VI THAY ĐỔI
+- Sử dụng đủ 5 hình ảnh người dùng cung cấp, tối ưu thành WebP và đặt trong assets/.
+- Tạo favicon cục bộ từ biểu trưng: ICO đa kích thước, PNG 192 px và Apple touch icon 180 px; không còn phụ thuộc ảnh favicon từ máy chủ bên ngoài.
+- Dùng biểu trưng tròn ở logo thanh bên; dùng hình địa cầu/mũ tốt nghiệp ở khu vực chào mừng; dùng banner Olympia và hai hình phụ trong khu vực Olympia.
+- Tách lớp tinh chỉnh nhận diện và bố cục thành brand.css, nạp sau styles.css.
+- Đồng bộ thanh bên và thanh công cụ trên cùng theo tông navy – xanh sáng – vàng; giảm cảm giác nhiều nút rời, gom điều khiển chính vào một capsule; giữ ô tìm kiếm tách biệt để dễ nhận diện.
+- Giữ phân biệt bốn không gian Work, Study, Fun, Olympia; giữ menu, trạng thái được chọn, trung tâm lưu trữ, lệnh nhanh, chế độ tập trung và chuyển sáng/tối.
+- Bổ sung điều chỉnh responsive cho desktop, tablet, mobile và màn hình rất hẹp.
+- Không thay đổi APP_VERSION (17), schema dữ liệu hoặc thuật toán lưu trữ/chức năng học tập.
+
+2. KIỂM TRA TĨNH — KẾT QUẢ
+- `node --check app.js`: PASS.
+- Phân tích styles.css và brand.css bằng tinycss2, gồm cả danh sách khai báo bên trong từng rule: 0 lỗi cú pháp.
+- HTML phân tích thành công; 95 ID, không trùng lặp.
+- 0 thuộc tính style inline; 0 thẻ style; 0 script inline.
+- 44 nút tĩnh đều có type.
+- Ảnh tĩnh đều có alt; các ảnh sinh động trong giao diện Olympia cũng khai báo alt.
+- 0 tham chiếu cục bộ bị thiếu trong HTML (stylesheet, script, favicon và ảnh).
+- Có đúng 1 meta theme-color.
+- Xác nhận các tài nguyên PNG, ICO và WebP đọc được; favicon ICO chứa 5 kích thước.
+- APP_VERSION vẫn là 17.
+
+3. KIỂM TRA GIAO DIỆN VÀ TƯƠNG TÁC TRONG TRÌNH DUYỆT
+- Dùng Chromium với DOM harness cô lập: nhúng HTML/CSS/JS và ảnh thành dữ liệu trong trang thử, thay lớp lưu trữ chỉ trong harness bằng facade kiểm thử. Mã sản phẩm không bị thay đổi để phục vụ bước này.
+- Kiểm tra trang chủ, chuyển sang Olympia và tải ảnh: PASS; 3/3 ảnh Olympia tải thành công trong harness.
+- Kiểm tra menu chuyển không gian, chuyển tới mục Kế hoạch, thu gọn/mở lại sidebar, bật/tắt chế độ tập trung và đổi giao diện sáng/tối: PASS.
+- Kiểm tra drawer trên mobile: mở được, lớp nền phủ xuất hiện và đóng khi nhấn lớp nền: PASS.
+- Kiểm tra 26 chiều rộng viewport từ 320 px đến 1920 px: không phát hiện tràn ngang; nút mở menu không bị ẩn ở vùng màn hình nhỏ.
+- 0 lỗi JavaScript runtime và 0 lỗi console trong lượt smoke test.
+- Đã sửa lỗi ảnh Olympia bị kéo theo kích thước thuộc tính HTML 1254 px; CSS hiện đặt chiều cao hiển thị thực tế cho banner và ảnh phụ, đồng thời điều chỉnh ở breakpoint mobile.
+
+4. GIỚI HẠN KIỂM THỬ
+- Điều hướng trực tiếp tới file/địa chỉ cục bộ trong Chromium bị môi trường kiểm thử chặn (ERR_BLOCKED_BY_ADMINISTRATOR), vì vậy tương tác được chạy qua DOM harness cô lập thay vì origin triển khai thật.
+- Facade lưu trữ trong harness chỉ dùng để kiểm tra render/tương tác; không xem đây là bằng chứng kiểm thử IndexedDB hoặc localStorage bền vững trên hồ sơ người dùng.
+- Chưa xác minh trên origin GitHub Pages thực tế: tải lại trang với dữ liệu cá nhân, nhập/xuất JSON toàn vòng, quota, xung đột nhiều tab, phục hồi dữ liệu và hành vi cache của trình duyệt.
+- Vì vậy, kết quả PASS phản ánh kiểm tra cú pháp/tài nguyên và smoke test giao diện đã nêu; không có nghĩa đã chứng minh mọi lỗi tiềm ẩn đều bị loại bỏ.
+
+5. NỢ KỸ THUẬT CŨ CHƯA ĐƯỢC REFACTOR
+- styles.css là stylesheet tích lũy qua nhiều lần thiết kế, có selector lặp và các lớp override. Không có lỗi cú pháp được phát hiện, nhưng việc bảo trì và dự đoán cascade sẽ khó hơn.
+- app.js có các khai báo hàm cùng tên qua nhiều lớp bổ sung tính năng. JavaScript vẫn hợp lệ, nhưng khai báo cùng phạm vi có thể khiến định nghĩa sau ghi đè định nghĩa trước. Cần refactor thành module và có kiểm thử hồi quy; không tự động xóa trong đợt chỉnh nhận diện vì có thể ảnh hưởng hành vi/dữ liệu cũ.
+- Các trường hợp IndexedDB trên origin thật, quota trình duyệt, xung đột nhiều tab và phục hồi trên hồ sơ cá nhân vẫn cần kiểm thử tại môi trường triển khai.
+
+6. KHUYẾN NGHỊ TRIỂN KHAI
+- Trước khi thay bản đang chạy, xuất JSON sao lưu.
+- Tải lên đồng bộ index.html, styles.css, brand.css, app.js và toàn bộ thư mục assets/; không bỏ riêng brand.css hoặc bất kỳ ảnh/favicon nào.
+- Giữ nguyên origin/domain khi cập nhật để tránh tạo một kho dữ liệu trình duyệt khác.
+- Sau triển khai, kiểm tra mở trang trên trình duyệt thực tế, thử chuyển Work/Study/Fun/Olympia, mở mobile menu và thực hiện xuất rồi nhập lại một bản JSON sao lưu.

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="application-name" content="StudySpace BLOOM">
+<meta name="apple-mobile-web-app-title" content="BLOOM">
+
+
+
+
+<title>StudySpace BLOOM — Không gian tri thức cá nhân</title>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="theme-color" content="#0b3d91">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="brand.css">
+</head>
+<body>
+<div class="app" id="appShell">
+ <aside class="sidebar" id="sidebar">
+  <div class="sidebar-head"><div class="brand"><div class="logo" aria-label="StudySpace"><img class="brand-emblem" src="assets/brand-emblem.webp" alt="" width="48" height="48" decoding="async"></div><div class="brand-copy"><b>StudySpace</b><small>Không gian cá nhân</small></div></div><button type="button" class="sidebar-collapse" id="sidebarCollapse" aria-label="Thu gọn thanh bên" title="Thu gọn thanh bên"><span>‹</span></button></div>
+  
+  <div class="side-actions"><button type="button" class="btn primary" id="newProject" title="Dự án mới"><span class="side-action-icon">＋</span><span class="side-action-label">Dự án mới</span></button></div>
+  <nav class="nav"><button type="button" id="navHome" class="active" title="Tổng quan"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3.8 10.5 8.2-7 8.2 7v9.2a1.3 1.3 0 0 1-1.3 1.3h-5.1v-6.2h-3.6V21H5.1a1.3 1.3 0 0 1-1.3-1.3z"/></svg></span><span class="nav-label">Tổng quan</span></button><button type="button" id="navReview" title="Lịch ôn tập"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 6.8v5.5l3.7 2.1"/></svg></span><span class="nav-label">Lịch ôn tập</span><span id="dueBadge" class="nav-count">0</span></button><button type="button" id="navNews" title="Tin tức"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M7.5 3.5v3M16.5 3.5v3M3.5 9h17M7.5 12.5h3M13.5 12.5h3M7.5 16h3"/></svg></span><span class="nav-label">Tin tức</span><span id="newsBadge" class="nav-count">0</span></button></nav>
+  
+  <div class="side-title"><span>Thư viện dự án</span><span id="projectCount">0</span></div>
+  <div class="tree" id="tree"></div>
+  <div class="side-bottom"><div class="switch-line"><span>🔊 Tự đọc tiếng Anh</span><button type="button" id="autoSpeakSwitch" class="switch" aria-label="Bật tắt tự đọc"></button></div><div class="field speech-rate-field"><select id="speechRate" aria-label="Tốc độ phát âm"><option value="0.8">0.8×</option><option value="0.9">0.9×</option><option value="1" selected>1×</option><option value="1.1">1.1×</option></select></div><div class="side-utility-actions"><button type="button" class="btn plain tiny" id="backupTop" title="Xuất bản sao lưu">⇩ Sao lưu</button><button type="button" class="btn plain tiny" id="importTop" title="Nhập bản sao lưu">⇧ Nhập dữ liệu</button></div></div>
+ </aside>
+ <main class="main"><div class="inner">
+  <header class="topbar"><div class="topbar-left topbar-leading"><button type="button" class="btn plain mobile-menu" id="menuBtn" aria-label="Mở thanh điều hướng" aria-expanded="false" title="Mở thanh điều hướng"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="crumb" id="crumb"><b>StudySpace</b><span>›</span><span>Tổng quan</span></div></div><div class="global-search-wrap"><span class="global-search-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.4"/><path d="m16 16 4.2 4.2"/></svg></span><input id="globalSearch" type="search" autocomplete="off" placeholder="Tìm toàn BLOOM…" aria-label="Tìm kiếm toàn bộ BLOOM qua các chế độ"><div id="globalSearchResults" class="global-search-results hidden"></div></div><div class="top-actions" aria-label="Công cụ thanh trên cùng">
+   <div class="toolbar-dock-group" aria-label="Điều hướng không gian">
+   <button type="button" class="bloom-home-quick" id="homeQuickBtn" aria-label="Về Tổng quan" title="Về Tổng quan"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3.5 10.4 8.5-7.1 8.5 7.1v9.1a1.4 1.4 0 0 1-1.4 1.4h-5.3v-6.3h-3.6v6.3H4.9a1.4 1.4 0 0 1-1.4-1.4z"/></svg></button>
+   <div class="active-mode-chip" id="activeModeChip" data-mode="study" aria-live="polite" title="Chế độ đang sử dụng"><span id="activeModeSymbol">📚</span><b id="activeModeLabel">Học tập</b></div>
+   <div class="top-dropdown" id="spaceDropdown">
+    <button type="button" class="topbar-icon-btn" id="spaceMenuBtn" aria-label="Mở menu Không gian" aria-controls="spaceMenu" aria-haspopup="true" aria-expanded="false" title="Không gian" data-active-mode="study">
+     <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.8"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.8"/></svg><i class="topbar-active-dot" id="spaceActiveDot"></i>
+    </button>
+    <div class="topbar-dropdown" id="spaceMenu" role="menu" aria-label="Chọn không gian" hidden>
+     <div class="topbar-dropdown-head"><div><b>Không gian</b><small>Chọn khu vực làm việc</small></div><span>4 chế độ</span></div>
+     <div class="space-menu-list" id="modeSwitch" role="group" aria-label="Chọn chế độ">
+      <button type="button" class="mode-btn" data-mode="work" role="menuitem"><span class="mode-emoji">💼</span><span class="mode-copy"><b>Công việc</b><small>Dự án và bộ câu hỏi Olympia</small></span><span class="mode-check">✓</span></button>
+      <button type="button" class="mode-btn" data-mode="study" role="menuitem"><span class="mode-emoji">📚</span><span class="mode-copy"><b>Học tập</b><small>Môn học, trang vở và ôn tập</small></span><span class="mode-check">✓</span></button>
+      <button type="button" class="mode-btn" data-mode="fun" role="menuitem"><span class="mode-emoji">✨</span><span class="mode-copy"><b>Giải trí</b><small>Sở thích và ý tưởng cá nhân</small></span><span class="mode-check">✓</span></button>
+      <button type="button" class="mode-btn" data-mode="olympia" role="menuitem"><span class="mode-emoji">🏆</span><span class="mode-copy"><b>Olympia</b><small>Ngân hàng câu hỏi, bộ đề và kiểm định nguồn 2026</small></span><span class="mode-check">✓</span></button>
+     </div>
+    </div>
+   </div>
+   <div class="top-dropdown" id="toolsDropdown">
+    <button type="button" class="topbar-icon-btn" id="toolsMenuBtn" aria-label="Mở menu Công cụ" aria-controls="toolsMenu" aria-haspopup="true" aria-expanded="false" title="Công cụ">
+     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h6v6H4zM14 5.5h6v6h-6zM4 15.5h6v4H4zM14 15.5h6v4h-6z"/><path d="M7 8.5h.01M17 8.5h.01"/></svg>
+    </button>
+    <div class="topbar-dropdown tools-dropdown-menu" id="toolsMenu" role="menu" aria-label="Công cụ" hidden>
+     <div class="topbar-dropdown-head"><div><b>Công cụ</b><small>Mở nhanh chức năng</small></div><span>7 tiện ích</span></div>
+     <div class="tools-menu-grid">
+      <button type="button" data-bloom-page="tasks" role="menuitem"><span class="tools-menu-icon"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/><path d="M19 12v7H5V5h9"/></svg></span><span>Kế hoạch</span></button>
+      <button type="button" data-bloom-page="practice" role="menuitem"><span class="tools-menu-icon"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5M8 16h3"/></svg></span><span>Luyện tập</span></button>
+      <button type="button" data-bloom-page="knowledge" role="menuitem"><span class="tools-menu-icon"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.3"/><circle cx="18" cy="6" r="2.3"/><circle cx="12" cy="18" r="2.3"/><path d="m8 7.2 2.8 8.5M16 7.2l-2.8 8.5M8.4 6h7.2"/></svg></span><span>Bản đồ tri thức</span></button>
+      <button type="button" data-bloom-page="ideas" role="menuitem"><span class="tools-menu-icon"><svg viewBox="0 0 24 24"><path d="m12 3 1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7L12 3z"/><path d="m19 16 .8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16z"/></svg></span><span>Ý tưởng</span></button>
+      <button type="button" data-bloom-page="stats" role="menuitem"><span class="tools-menu-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h17"/><path d="M8 16v-4M13 16V8M18 16V5"/></svg></span><span>Thống kê</span></button>
+      <button type="button" data-bloom-page="archive" role="menuitem"><span class="tools-menu-icon"><svg viewBox="0 0 24 24"><path d="M4 7h16v13H4zM3 4h18v3H3z"/><path d="M9 11h6"/></svg></span><span>Lưu trữ</span></button>
+      <button type="button" data-bloom-page="appearance" role="menuitem"><span class="tools-menu-icon"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18h1.2a2 2 0 0 0 1.4-3.4 1.8 1.8 0 0 1 1.3-3.1h1.2A4.9 4.9 0 0 0 22 9.6C21.1 5.8 17 3 12 3z"/><path d="M7.5 10h.01M10 7h.01M15 7h.01M17 10h.01"/></svg></span><span>Giao diện</span></button>
+     </div>
+    </div>
+   </div>
+   </div>
+   <div class="toolbar-utility-group" aria-label="Trạng thái và tiện ích">
+   <button type="button" class="saved storage-center" id="storageCenter" title="Mở trung tâm lưu trữ" aria-label="Mở trung tâm lưu trữ"><span class="dot"></span><span class="storage-center-copy"><span id="saveLabel">Đã lưu</span><small id="storageMiniLabel">Đang kiểm tra bộ nhớ</small></span><span class="storage-center-chevron">⌄</span></button>
+   <button type="button" class="btn plain tiny theme-toggle-btn" id="themeToggle" title="Chuyển giao diện tối / sáng" aria-label="Chuyển giao diện tối / sáng"><span id="themeToggleIcon">☾</span><span class="theme-toggle-label">Tối</span></button>
+   </div>
+  </div></header>
+  <section id="view"></section>
+ </div></main>
+</div>
+<button type="button" id="sidebarScrim" class="sidebar-scrim" aria-label="Đóng thanh điều hướng" tabindex="-1"></button>
+<div class="overlay" id="overlay"><div class="modal"><div class="modal-head"><h2 id="modalTitle">Tạo mới</h2><button type="button" class="close" id="closeModal">×</button></div><form id="form"><div id="fields"></div><div class="modal-actions"><button type="button" class="btn plain" id="cancel">Hủy</button><button class="btn primary" type="submit" id="submit">Lưu lại</button></div></form></div></div>
+<div class="overlay lightbox-overlay" id="lightbox"><div class="lightbox-stage"><button type="button" class="close lightbox-close" id="closeLightbox" aria-label="Đóng ảnh">×</button><img id="largeImage" class="lightbox-image" alt="Ảnh minh họa"></div></div>
+<div id="ssRefPicker" class="ss-ref-picker" aria-hidden="true">
+ <section class="ss-ref-picker-card" role="dialog" aria-modal="true" aria-labelledby="ssRefPickerTitle">
+  <div class="ss-ref-picker-head"><span class="ss-ref-picker-mark">⛓</span><div><span class="ss-ref-kicker">GẮN THAM CHIẾU VÀO VĂN BẢN</span><h2 id="ssRefPickerTitle">Tạo liên kết nội bộ</h2><p>Bôi đen cụm chữ trước đó để dùng chính cụm chữ ấy làm liên kết.</p></div><button type="button" id="ssRefCancel" class="ss-ref-close" aria-label="Đóng">×</button></div>
+  <div class="ss-ref-picker-body">
+   <label class="ss-ref-field"><span>Văn bản sẽ hiển thị</span><input id="ssRefLabel" type="text" maxlength="180" placeholder="Ví dụ: Định luật II Newton"></label>
+   <div class="ss-ref-picker-grid">
+    <label class="ss-ref-field"><span>Loại nội dung đích</span><select id="ssRefType"><option value="project">Dự án / Dự án con</option><option value="news">Tin tức theo ngày</option></select></label>
+    <label class="ss-ref-field" id="ssRefProjectWrap"><span>Chọn dự án</span><select id="ssRefProject"></select></label>
+    <label class="ss-ref-field" id="ssRefDateWrap" hidden><span>Chọn ngày Tin tức</span><input id="ssRefDate" type="date"></label>
+    <label class="ss-ref-field"><span>Vị trí cần mở</span><select id="ssRefPage"></select></label>
+   </div>
+   <div class="ss-ref-picker-hint"><span>✦</span><span id="ssRefTargetNote">Liên kết sẽ được lưu ngay trong đoạn chữ bạn chọn, không tạo danh sách liên kết riêng.</span></div>
+  </div>
+  <div class="ss-ref-picker-foot"><button type="button" id="ssRefCancel2" class="btn plain">Hủy</button><button type="button" id="ssRefConfirm" class="btn primary">⛓ Gắn vào nội dung</button></div>
+ </section>
+</div>
+<div id="ssRefWindow" class="ss-ref-window-overlay" aria-hidden="true">
+ <section class="ss-ref-window" role="dialog" aria-modal="true" aria-labelledby="ssRefWindowTitle">
+  <header class="ss-ref-window-head"><div class="ss-ref-window-brand">↗</div><div class="ss-ref-window-heading"><span class="ss-ref-kicker">CỬA SỔ LIÊN KẾT</span><h2 id="ssRefWindowTitle">Nội dung được liên kết</h2><p id="ssRefWindowPath"></p></div><div class="ss-ref-window-head-actions"><span id="ssRefWindowCounter" class="ss-ref-window-counter"></span><button type="button" id="ssRefWindowClose" class="ss-ref-close" aria-label="Đóng cửa sổ">×</button></div></header>
+  <div id="ssRefWindowBody" class="ss-ref-window-body"></div>
+  <footer class="ss-ref-window-foot"><span>✧ Bạn vẫn đang ở trang hiện tại</span><div><button type="button" id="ssRefWindowPrev" class="btn plain tiny" hidden>‹ Trang trước</button><button type="button" id="ssRefWindowNext" class="btn primary tiny" hidden>Trang sau ›</button><button type="button" id="ssRefWindowClose2" class="btn plain tiny">Đóng cửa sổ</button></div></footer>
+ </section>
+</div>
+<div id="studyToolsModal" class="study-tools-overlay" aria-hidden="true">
+ <section class="study-tools-dialog" role="dialog" aria-modal="true" aria-labelledby="studyToolsTitle">
+  <header class="study-tools-head">
+   <div class="study-tools-head-mark">✦</div>
+   <div class="study-tools-head-copy"><span class="study-tools-kicker">STUDYSPACE · LEARNING TOOLKIT</span><h2 id="studyToolsTitle">Học cụ đa lĩnh vực</h2><p>Chọn mẫu kiến thức phù hợp với môn học rồi chèn ngay tại vị trí con trỏ.</p></div>
+   <button type="button" class="study-tools-close" id="studyToolsClose" aria-label="Đóng học cụ">×</button>
+  </header>
+  <div class="study-tools-toolbar"><label class="study-tools-search"><span>⌕</span><input id="studyToolsSearch" type="search" placeholder="Tìm học cụ, môn học hoặc dạng ghi chép…" autocomplete="off"></label><span class="study-tools-count" id="studyToolsCount">0 mẫu</span></div>
+  <div class="study-tools-categories" id="studyToolsCategories" role="tablist" aria-label="Lĩnh vực học tập"></div>
+  <div class="study-tools-main"><div class="study-tools-intro" id="studyToolsIntro"></div><div class="study-tools-grid" id="studyToolsGrid"></div></div>
+  <footer class="study-tools-foot"><span><i></i> Nội dung được chèn vào vở/câu hỏi và lưu cùng tài liệu.</span><button type="button" class="btn plain" id="studyToolsCancel">Đóng</button></footer>
+ </section>
+</div>
+<div class="storage-overlay" id="storageModal" aria-hidden="true">
+ <section class="storage-dialog" role="dialog" aria-modal="true" aria-labelledby="storageModalTitle">
+  <header class="storage-head"><div class="storage-head-mark">⛨</div><div class="storage-head-copy"><span class="storage-kicker">STUDYSPACE · DATA VAULT</span><h2 id="storageModalTitle">Trung tâm lưu trữ</h2><p>Bảo vệ ghi chép, câu hỏi và lịch sử học tập của bạn.</p></div><button type="button" class="storage-close" id="storageModalClose" aria-label="Đóng">×</button></header>
+  <div class="storage-overview">
+   <article class="storage-metric"><span>Kho dữ liệu chính</span><b id="storageEngineValue">Đang kiểm tra…</b><small>IndexedDB / bộ nhớ dự phòng</small></article>
+   <article class="storage-metric"><span>Bảo vệ dài hạn</span><b id="storagePersistentValue" data-state="neutral">Đang kiểm tra…</b><small>Quyền lưu trữ bền vững của trình duyệt</small></article>
+   <article class="storage-metric"><span>Dung lượng đang dùng</span><b id="storageUsageValue">Đang kiểm tra…</b><small>Dung lượng ước tính của website</small></article>
+   <article class="storage-metric storage-metric-snapshots"><span>Mốc khôi phục</span><b id="storageSnapshotCount">0</b><small>Giữ tối đa 35 mốc hằng ngày + 15 mốc thủ công</small></article>
+  </div>
+  <p class="storage-autosnapshot-note" id="storageAutoSnapshotInfo">Đang kiểm tra lịch sao lưu…</p>
+  <div class="storage-actions"><button type="button" class="btn primary" id="storageSnapshotNow">✦ Tạo mốc khôi phục</button><button type="button" class="btn plain" id="storageExportJSON">⇩ Xuất JSON</button><button type="button" class="btn soft" id="storageRequestPersistent">⛨ Bảo vệ bộ nhớ</button></div>
+  <section class="storage-history"><div class="storage-history-heading"><div><span class="storage-kicker">VERSION HISTORY</span><h3>Lịch sử bản sao tự động</h3></div><span id="storageLatestValue" class="storage-latest">Chưa có bản sao</span></div><div id="storageSnapshotList" class="storage-snapshot-list"><div class="storage-empty">Đang tải lịch sử…</div></div></section>
+  <footer class="storage-foot"><span>✦ Giữ thêm bản JSON ở một nơi riêng. Bản sao trong trình duyệt không thay thế bản sao ngoài máy.</span><button type="button" class="btn plain tiny" id="storageModalClose2">Đóng</button></footer>
+ </section>
+</div>
+<input type="file" id="importFile" class="hidden" accept=".json,application/json" aria-label="Chọn tệp sao lưu JSON để nhập"><div class="toast" id="toast"></div>
+
+
+
+
+
+
+
+
+
+<script src="app.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

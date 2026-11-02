@@ -1,0 +1,202 @@
+/* BLOOM identity refresh · supplied artwork + one coherent command capsule */
+#appShell{--bloom-navy:#092d70;--bloom-blue:#1453b8;--bloom-sky:#eaf3ff;--bloom-gold:#ffd36d;--bloom-rail-width:266px}
+@media(min-width:981px){#appShell.app:not(.sidebar-collapsed){grid-template-columns:var(--bloom-rail-width) minmax(0,1fr)!important}}
+#appShell .sidebar{
+  background:linear-gradient(165deg,#082b6b 0%,#0b397e 48%,#075184 100%)!important;
+  border-right:1px solid rgba(210,230,255,.17)!important;
+  box-shadow:8px 0 28px rgba(7,34,82,.055)!important;
+  padding:16px 13px 14px!important;gap:14px!important;
+}
+#appShell .sidebar-head{
+  min-height:70px!important;padding:9px 9px 12px!important;margin:0!important;
+  border:1px solid rgba(222,239,255,.19)!important;border-radius:18px!important;
+  background:linear-gradient(135deg,rgba(255,255,255,.15),rgba(255,255,255,.055))!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.13),0 7px 20px rgba(2,18,52,.12)!important;
+}
+#appShell .sidebar-head:before{content:"KHÔNG GIAN TRI THỨC"!important;left:67px!important;bottom:7px!important;font-size:6px!important;letter-spacing:1.1px!important;color:rgba(221,239,255,.64)!important}
+#appShell .sidebar-head:after{right:-38px!important;top:-68px!important;width:142px!important;height:142px!important;border-color:rgba(228,243,255,.13)!important;box-shadow:0 0 0 14px rgba(228,243,255,.035),0 0 0 30px rgba(228,243,255,.02)!important}
+#appShell .sidebar-head .brand{gap:9px!important;padding:0 2px!important;z-index:1!important}
+#appShell .logo{
+  width:44px!important;height:44px!important;flex:0 0 44px!important;padding:0!important;
+  overflow:hidden!important;border:1px solid rgba(255,239,181,.9)!important;border-radius:13px!important;
+  background:#0d4b9a!important;box-shadow:0 4px 13px rgba(0,13,54,.24),0 0 0 3px rgba(255,215,115,.12)!important;
+}
+#appShell .brand-emblem{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;border-radius:12px!important}
+#appShell .brand b{font-size:15px!important;font-weight:850!important;letter-spacing:-.25px!important;color:#fff!important}
+#appShell .brand small{display:block!important;margin-top:3px!important;font-size:9px!important;letter-spacing:.15px!important;color:#c6dcff!important}
+#appShell .sidebar-collapse{width:31px!important;height:31px!important;border-radius:10px!important;background:rgba(255,255,255,.09)!important;border:1px solid rgba(225,240,255,.20)!important;z-index:1!important}
+#appShell .sidebar-collapse:hover{background:rgba(255,255,255,.18)!important}
+#appShell .side-actions{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:7px!important;margin:0!important;padding:0 1px 11px!important;border-bottom:1px solid rgba(220,237,255,.14)!important}
+#appShell .side-actions .btn{width:100%!important;min-width:0!important;min-height:41px!important;height:41px!important;border-radius:12px!important;justify-content:center!important;font-size:11px!important;font-weight:850!important;box-shadow:0 7px 16px rgba(2,20,61,.16),inset 0 1px 0 rgba(255,255,255,.55)!important}
+#appShell .side-actions .primary{color:#4c350a!important;background:linear-gradient(110deg,#ffedac,#ffd36e 58%,#ffbb5e)!important;border:1px solid rgba(255,240,190,.94)!important}
+#appShell .side-actions .btn:hover{transform:translateY(-1px)!important;filter:brightness(1.035)!important}
+#appShell .nav{gap:5px!important;padding:0!important;border:0!important}
+#appShell .nav button{
+  min-height:43px!important;padding:5px 10px!important;gap:10px!important;border:1px solid transparent!important;
+  border-radius:12px!important;color:#d3e3ff!important;background:transparent!important;
+  font-size:11px!important;font-weight:720!important;transition:background .16s,border-color .16s,color .16s,transform .16s!important;
+}
+#appShell .nav button:hover{transform:translateX(1px)!important;background:rgba(255,255,255,.09)!important;color:#fff!important}
+#appShell .nav button.active{background:linear-gradient(100deg,#fff 0%,#eff6ff 100%)!important;color:#174d9c!important;border-color:rgba(255,255,255,.8)!important;box-shadow:0 5px 13px rgba(1,17,53,.17)!important}
+#appShell .nav button.active:before{left:0!important;top:9px!important;bottom:9px!important;width:3px!important;border-radius:0 4px 4px 0!important;background:linear-gradient(#ffc858,#73b6ff)!important}
+#appShell .nav-icon{width:29px!important;height:29px!important;display:inline-grid!important;place-items:center!important;flex:0 0 29px!important;border-radius:9px!important;background:rgba(255,255,255,.085)!important;color:#cce1ff!important}
+#appShell .nav button.active .nav-icon{background:#e4efff!important;color:#2867c7!important}
+#appShell .nav .nav-count{margin-left:auto!important;background:rgba(255,255,255,.14)!important;color:#f4d987!important;border:1px solid rgba(255,255,255,.12)!important}
+#appShell .nav button.active .nav-count{background:#fff0c8!important;color:#80580d!important;border:0!important}
+#appShell .side-title{padding:6px 7px 2px!important;border-top:1px solid rgba(221,237,255,.13)!important;color:#a9c7f1!important;font-size:8px!important;letter-spacing:1.25px!important}
+#appShell .tree{max-height:calc(100vh - 370px)!important;scrollbar-color:rgba(192,216,250,.38) transparent!important}
+#appShell .tree-empty{border-color:rgba(221,237,255,.22)!important;background:rgba(255,255,255,.055)!important;color:#c4d9f7!important}
+#appShell .tree-select{min-height:33px!important;border-radius:9px!important;color:#d6e5ff!important;font-size:10px!important}
+#appShell .tree-select:hover{background:rgba(255,255,255,.085)!important;color:#fff!important}
+#appShell .tree-select.active{background:#fff!important;color:#164b98!important;border-color:#fff!important;box-shadow:0 4px 11px rgba(0,14,52,.16)!important}
+#appShell .tree-num{color:#f6d78e!important}
+#appShell .side-bottom{margin-top:auto!important;padding:11px!important;border-radius:14px!important;background:linear-gradient(140deg,rgba(255,255,255,.13),rgba(255,255,255,.065))!important;border:1px solid rgba(223,239,255,.19)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.10)!important}
+#appShell .switch-line{font-size:9px!important;color:#d9e8ff!important}
+#appShell .side-bottom .field select{height:32px!important;border-radius:9px!important;border:1px solid rgba(219,235,255,.55)!important;color:#28456e!important}
+#appShell .side-utility-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:6px!important;margin-top:8px!important}
+#appShell .side-utility-actions .btn{min-width:0!important;padding:7px 4px!important;border-radius:9px!important;background:rgba(255,255,255,.10)!important;border:1px solid rgba(227,240,255,.18)!important;color:#e7f1ff!important;font-size:9px!important}
+#appShell .side-utility-actions .btn:hover{background:rgba(255,255,255,.18)!important}
+
+/* Top command bar: one capsule, no competing button cards. */
+#appShell .topbar{
+  grid-template-columns:minmax(120px,auto) minmax(220px,1fr) max-content!important;
+  gap:13px!important;min-height:68px!important;padding:9px 12px!important;margin:0 0 20px!important;
+  border:1px solid #dce7f6!important;border-radius:20px!important;
+  background:linear-gradient(110deg,rgba(255,255,255,.97),rgba(245,249,255,.96) 66%,rgba(255,250,239,.95))!important;
+  box-shadow:0 8px 22px rgba(26,62,125,.065),inset 0 1px 0 #fff!important;
+}
+#appShell .topbar-left{min-width:0!important}
+#appShell .crumb{min-height:34px!important;padding:0 8px!important;border:0!important;background:transparent!important;box-shadow:none!important;font-size:10px!important;gap:7px!important}
+#appShell .crumb b{color:#1d4e9b!important}
+#appShell .global-search-wrap{height:39px!important;max-width:none!important;padding:0 13px!important;border:1px solid #dfe8f5!important;border-radius:999px!important;background:#f8fbff!important;box-shadow:inset 0 1px 2px rgba(30,66,125,.035)!important}
+#appShell .global-search-wrap:focus-within{border-color:#9bbcf0!important;background:#fff!important;box-shadow:0 0 0 3px rgba(63,123,216,.10)!important}
+#appShell .global-search-wrap input{background:transparent!important;border:0!important;box-shadow:none!important;font-size:11px!important}
+#appShell .global-search-icon{left:13px!important}
+#appShell .top-actions{display:flex!important;align-items:center!important;gap:4px!important;padding:4px!important;border:1px solid #dbe5f3!important;border-radius:999px!important;background:rgba(255,255,255,.88)!important;box-shadow:0 3px 10px rgba(32,67,125,.045),inset 0 1px 0 #fff!important;backdrop-filter:blur(12px)!important}
+#appShell .toolbar-dock-group,#appShell .toolbar-utility-group{display:inline-flex!important;align-items:center!important;flex:0 0 auto!important;gap:3px!important;padding:0!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
+#appShell .toolbar-utility-group{margin-left:3px!important;padding-left:6px!important;border-left:1px solid #e3eaf4!important}
+#appShell .bloom-home-quick,#appShell .topbar-icon-btn,#appShell #bloomCommandBtn,#appShell #bloomFocusToggle,#appShell .theme-toggle-btn{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;flex:0 0 34px!important;
+  width:34px!important;min-width:34px!important;height:34px!important;min-height:34px!important;padding:0!important;
+  border:1px solid transparent!important;border-radius:50%!important;background:transparent!important;color:#557096!important;
+  box-shadow:none!important;transition:background .16s,color .16s,border-color .16s,transform .16s!important;
+}
+#appShell .bloom-home-quick svg,#appShell .topbar-icon-btn svg,#appShell #bloomCommandBtn svg,#appShell #bloomFocusToggle svg{width:17px!important;height:17px!important;fill:none!important;stroke:currentColor!important;stroke-width:1.8!important;stroke-linecap:round!important;stroke-linejoin:round!important}
+#appShell .bloom-home-quick:hover,#appShell .topbar-icon-btn:hover,#appShell #bloomCommandBtn:hover,#appShell #bloomFocusToggle:hover,#appShell .theme-toggle-btn:hover{background:#edf4ff!important;color:#205bb8!important;border-color:#e1ebfa!important;transform:none!important}
+#appShell .active-mode-chip{height:33px!important;min-height:33px!important;max-width:116px!important;padding:0 9px!important;border:1px solid color-mix(in srgb,var(--mode-accent) 22%,white)!important;border-radius:999px!important;box-shadow:none!important}
+#appShell .active-mode-chip>span{width:23px!important;height:23px!important;flex:0 0 23px!important;background:rgba(255,255,255,.82)!important;font-size:12px!important}
+#appShell .active-mode-chip>b{font-size:9px!important}
+#appShell #spaceMenuBtn[data-active-mode]{background:var(--mode-soft)!important;color:var(--mode-accent)!important}
+#appShell .storage-center{height:31px!important;min-height:31px!important;min-width:66px!important;padding:0 8px!important;gap:6px!important;border:0!important;border-radius:999px!important;background:#edf8f3!important;color:#18765f!important;box-shadow:none!important}
+#appShell .storage-center:hover{background:#e2f4eb!important}
+#appShell .storage-center .dot{width:7px!important;height:7px!important;flex:0 0 7px!important}
+#appShell .storage-center-copy{display:flex!important;flex-direction:column!important;gap:0!important}
+#appShell .storage-center-copy>span{font-size:8px!important;font-weight:850!important;line-height:1.1!important}
+#appShell .storage-center-copy small{display:block!important;font-size:7px!important;line-height:1.1!important;color:#699989!important}
+#appShell .storage-center-chevron{font-size:9px!important}
+#appShell #bloomCommandBtn{background:#f1edff!important;color:#7257b9!important}
+#appShell #bloomFocusToggle{background:#edf8f3!important;color:#16836b!important}
+#appShell #bloomFocusToggle[aria-pressed="true"]{background:#d8f2e7!important;color:#08745b!important;border-color:#b8e6d5!important}
+#appShell .theme-toggle-btn{background:#fff6e8!important;color:#9b6d20!important;border-color:#f5e8d2!important}
+#appShell .theme-toggle-label{display:none!important}
+#appShell .topbar-dropdown{border:1px solid #dce7f6!important;border-radius:16px!important;box-shadow:0 18px 42px rgba(17,43,91,.17)!important}
+#appShell .topbar-icon-btn[aria-expanded="true"]{background:#eaf2ff!important;color:#245fba!important;border-color:#dce8fa!important}
+#appShell .bloom-welcome-mark{width:92px!important;height:92px!important;display:grid!important;place-items:center!important;overflow:hidden!important;border-radius:23px!important;border:1px solid rgba(255,255,255,.35)!important;background:rgba(255,255,255,.14)!important;box-shadow:0 12px 28px rgba(5,37,95,.18)!important}
+#appShell .bloom-welcome-mark img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important}
+
+/* Olympia gallery: use the supplied artwork as functional brand imagery. */
+#appShell .bloom-olympia-panel{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(230px,34%)!important;align-items:center!important;gap:18px!important;overflow:hidden!important;position:relative!important;padding:18px!important;background:linear-gradient(115deg,#f2f7ff 0%,#fff 54%,#fff7e7 100%)!important;border-color:#d9e6f8!important}
+#appShell .bloom-olympia-copy{min-width:0!important;position:relative!important;z-index:1!important}
+#appShell .bloom-olympia-kicker{display:block!important;margin:0 0 7px!important;color:#a67828!important;font-size:8px!important;font-weight:900!important;letter-spacing:1.6px!important}
+#appShell .bloom-olympia-panel .bloom-panel-head{margin:0 0 12px!important}
+#appShell .bloom-olympia-panel .bloom-panel-head h2{color:#183e85!important;font-size:17px!important}
+#appShell .bloom-olympia-panel .bloom-panel-head p{max-width:550px!important;line-height:1.65!important}
+#appShell .bloom-olympia-art-stack{display:grid!important;grid-template-columns:1fr!important;gap:7px!important;min-width:0!important;max-width:290px!important;justify-self:end!important}
+#appShell .bloom-olympia-banner{display:block!important;width:100%!important;aspect-ratio:1/1!important;object-fit:cover!important;border:1px solid #dce8fa!important;border-radius:15px!important;box-shadow:0 8px 20px rgba(13,45,104,.11)!important}
+#appShell .bloom-olympia-mini-art{display:grid!important;grid-template-columns:1fr 1fr!important;gap:7px!important}
+#appShell .bloom-olympia-mini-art img{display:block!important;width:100%!important;aspect-ratio:1.9/1!important;object-fit:cover!important;object-position:center 43%!important;border:1px solid #dce7f7!important;border-radius:9px!important}
+#appShell .bloom-template-open,#appShell .bloom-template-grid button{border-radius:12px!important;border-color:#d8e5f7!important;background:#fff!important;box-shadow:0 5px 15px rgba(29,64,124,.06)!important}
+
+/* Dark theme keeps controls, logos and Olympia artwork legible. */
+html[data-theme="dark"] #appShell .topbar{background:linear-gradient(110deg,#172740,#1c2d47 66%,#332f43)!important;border-color:#384d6a!important;box-shadow:0 8px 22px rgba(0,0,0,.22)!important}
+html[data-theme="dark"] #appShell .crumb{color:#b5c9e4!important}
+html[data-theme="dark"] #appShell .crumb b{color:#dbe9ff!important}
+html[data-theme="dark"] #appShell .global-search-wrap{background:#1c2b43!important;border-color:#3b506d!important}
+html[data-theme="dark"] #appShell .global-search-wrap input{color:#e4efff!important}
+html[data-theme="dark"] #appShell .top-actions{background:#182941!important;border-color:#3a4e69!important;box-shadow:none!important}
+html[data-theme="dark"] #appShell .toolbar-utility-group{border-left-color:#3e526e!important}
+html[data-theme="dark"] #appShell .bloom-home-quick,html[data-theme="dark"] #appShell .topbar-icon-btn{color:#c7d9f2!important}
+html[data-theme="dark"] #appShell .storage-center{background:#1d4038!important;color:#a8e3cf!important}
+html[data-theme="dark"] #appShell .bloom-olympia-panel{background:linear-gradient(115deg,#172b4c,#1c2e4d 58%,#3a3340)!important;border-color:#3c5272!important}
+html[data-theme="dark"] #appShell .bloom-olympia-panel .bloom-panel-head h2{color:#e0eaff!important}
+html[data-theme="dark"] #appShell .bloom-olympia-panel .bloom-panel-head p{color:#b7c9e2!important}
+html[data-theme="dark"] #appShell .bloom-olympia-banner,html[data-theme="dark"] #appShell .bloom-olympia-mini-art img{border-color:#4b6283!important}
+
+/* Responsive: preserve the command hierarchy without shrinking tap targets too far. */
+@media(max-width:1180px) and (min-width:981px){
+  #appShell .topbar{grid-template-columns:minmax(90px,auto) minmax(130px,1fr) max-content!important;gap:7px!important;padding:8px!important}
+  #appShell .top-actions{gap:2px!important;padding:3px!important}
+  #appShell .active-mode-chip{max-width:92px!important;padding:0 6px!important}
+  #appShell .bloom-home-quick,#appShell .topbar-icon-btn,#appShell #bloomCommandBtn,#appShell #bloomFocusToggle,#appShell .theme-toggle-btn{flex-basis:30px!important;width:30px!important;min-width:30px!important;height:30px!important;min-height:30px!important}
+}
+@media(max-width:980px){
+  #appShell .topbar{grid-template-columns:36px minmax(0,1fr)!important;grid-template-rows:39px 39px!important;gap:7px 8px!important;padding:8px!important;min-height:0!important}
+  #appShell .topbar-left{grid-column:1!important;grid-row:1!important;width:36px!important;min-width:36px!important}
+  #appShell .topbar .top-actions{grid-column:2!important;grid-row:1!important;width:100%!important;min-width:0!important;max-width:100%!important;justify-content:flex-start!important;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:none!important}
+  #appShell .topbar .top-actions::-webkit-scrollbar{display:none!important}
+  #appShell .topbar .global-search-wrap{grid-column:1/-1!important;grid-row:2!important;width:100%!important;max-width:none!important}
+  #appShell .topbar .toolbar-dock-group,#appShell .topbar .toolbar-utility-group{flex:0 0 auto!important}
+  #appShell .sidebar:not(.open){box-shadow:none!important}
+  #appShell .sidebar.open{box-shadow:16px 0 42px rgba(10,31,69,.25)!important}
+}
+@media(max-width:600px){
+  #appShell .topbar{grid-template-columns:34px minmax(0,1fr)!important;gap:6px!important;border-radius:15px!important}
+  #appShell .topbar-leading{gap:4px!important}
+  #appShell .topbar .top-actions{gap:2px!important;padding:3px!important}
+  #appShell .bloom-home-quick,#appShell .topbar-icon-btn,#appShell #bloomCommandBtn,#appShell #bloomFocusToggle,#appShell .theme-toggle-btn{flex-basis:31px!important;width:31px!important;min-width:31px!important;height:31px!important;min-height:31px!important}
+  #appShell .active-mode-chip{max-width:85px!important;min-height:29px!important;padding:0 5px!important;gap:4px!important}
+  #appShell .active-mode-chip>span{width:21px!important;height:21px!important;flex-basis:21px!important;font-size:11px!important}
+  #appShell .active-mode-chip>b{font-size:8px!important}
+  #appShell .storage-center{min-width:31px!important;width:31px!important;height:31px!important;min-height:31px!important;padding:0!important}
+  #appShell .storage-center-copy,#appShell .storage-center-chevron{display:none!important}
+  #appShell .bloom-welcome-mark{width:64px!important;height:64px!important;border-radius:17px!important}
+  #appShell .bloom-olympia-panel{grid-template-columns:1fr!important;gap:12px!important}
+  #appShell .bloom-olympia-art-stack{grid-template-columns:minmax(0,1fr) 104px!important;align-items:center!important;max-width:none!important;width:100%!important}
+  #appShell .bloom-olympia-banner{aspect-ratio:2.35/1!important;object-position:center 42%!important}
+  #appShell .bloom-olympia-mini-art{grid-template-columns:1fr!important}
+  #appShell .bloom-olympia-mini-art img{aspect-ratio:1.55/1!important}
+}
+@media(max-width:380px){
+  #appShell .bloom-home-quick{display:none!important}
+  #appShell .active-mode-chip{max-width:74px!important}
+  #appShell .bloom-olympia-art-stack{grid-template-columns:1fr!important}
+  #appShell .bloom-olympia-mini-art{grid-template-columns:1fr 1fr!important}
+}
+@media(prefers-reduced-motion:reduce){#appShell .sidebar *,#appShell .topbar *,#appShell .bloom-olympia-panel *{transition:none!important;animation:none!important}}
+@media(max-width:480px){
+  #appShell .topbar{grid-template-columns:34px minmax(0,1fr)!important;grid-template-rows:36px 39px!important;gap:6px!important}
+  #appShell .topbar .topbar-left{display:flex!important;grid-column:1!important;grid-row:1!important;width:34px!important;min-width:34px!important}
+  #appShell .topbar .crumb{display:none!important}
+  #appShell .topbar .mobile-menu{display:inline-flex!important;width:32px!important;min-width:32px!important;height:32px!important;min-height:32px!important;padding:0!important;align-items:center!important;justify-content:center!important;border-radius:50%!important}
+  #appShell .topbar .top-actions{grid-column:2!important;grid-row:1!important;justify-content:flex-start!important;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:none!important;width:100%!important;min-width:0!important}
+  #appShell .topbar .top-actions::-webkit-scrollbar{display:none!important}
+  #appShell .topbar .global-search-wrap{grid-column:1/-1!important;grid-row:2!important}
+}
+
+/* Artwork must obey the layout box, not retain the source bitmap's 1254px height. */
+#appShell .bloom-olympia-art-stack{align-content:center!important}
+#appShell .bloom-olympia-banner{height:290px!important;min-height:0!important;max-height:290px!important;aspect-ratio:1/1!important;object-fit:cover!important}
+#appShell .bloom-olympia-mini-art img{height:76px!important;min-height:0!important;max-height:76px!important;aspect-ratio:auto!important;object-fit:cover!important}
+@media(max-width:600px){
+  #appShell .bloom-olympia-banner{height:132px!important;max-height:132px!important;aspect-ratio:auto!important}
+  #appShell .bloom-olympia-mini-art img{height:62px!important;max-height:62px!important}
+}
+@media(max-width:380px){
+  #appShell .bloom-olympia-banner{height:152px!important;max-height:152px!important}
+  #appShell .bloom-olympia-mini-art img{height:82px!important;max-height:82px!important}
+}
+#appShell .bloom-welcome-mark{padding:0!important;margin:0!important;transform:none!important}
+#appShell .bloom-welcome-mark:after{display:none!important}
+#appShell .bloom-olympia-art-stack{max-width:250px!important}
+#appShell .bloom-olympia-banner{height:250px!important;max-height:250px!important}
+#appShell .bloom-olympia-mini-art img{height:64px!important;max-height:64px!important}
